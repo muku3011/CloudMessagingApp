@@ -8,21 +8,21 @@ import java.io.Serializable;
 public class UserData implements Serializable {
 
     private String userName;
-    private String registrationId;
+    private String userToken;
 
     public String getUserName() {
         return userName;
     }
 
-    public String getRegistrationId() {
-        return registrationId;
+    public String getUserToken() {
+        return userToken;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public void setRegistrationId(String registrationId) {
-        this.registrationId = registrationId;
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
     }
 }

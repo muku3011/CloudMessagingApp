@@ -2,10 +2,6 @@ package com.notifire.android.adduser;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.notifire.android.LoginSuccessful;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -36,13 +32,14 @@ public class HttpPostRequest extends AsyncTask<UserData, String, String> {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            String url = "http://cloudmessaging-cloudfly.rhcloud.com/addUser";
+            String url = "https://cloud-messaging-server.herokuapp.com/user";
             HttpPost httpPost = new HttpPost(url);
 
             // Convert Person object to JSON string using Jackson Lib
             ObjectMapper mapper = new ObjectMapper();
             String json = mapper.writeValueAsString(params[0]);
 
+            Log.d("json", json);
             // 5. set json to StringEntity
             StringEntity se = new StringEntity(json);
 
@@ -63,7 +60,7 @@ public class HttpPostRequest extends AsyncTask<UserData, String, String> {
                 result = convertInputStreamToString(inputStream);
             else
                 result = "Did not work!";
-
+            Log.d("result", result);
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
             e.printStackTrace();

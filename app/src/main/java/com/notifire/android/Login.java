@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.notifire.android.adduser.UserData;
-
-import static android.provider.Telephony.Carriers.PASSWORD;
-
 public class Login extends AppCompatActivity {
 
     public static String userName;

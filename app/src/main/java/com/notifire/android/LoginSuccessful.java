@@ -25,17 +25,21 @@ public class LoginSuccessful extends AppCompatActivity {
         generateToken();
     }
 
-    public void generateToken() {
+    private void generateToken() {
         final Button getTokenButton = findViewById(R.id.tokenButton);
         final TextView tokenTextView = findViewById(R.id.tokenTextView);
 
-        getTokenButton.setOnClickListener(new View.OnClickListener() {
+        getTokenButton.setOnClickListener(onClickListener(getTokenButton, tokenTextView));
+    }
+
+    private View.OnClickListener onClickListener(final Button getTokenButton, final TextView tokenTextView) {
+        return new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 HttpPostRequest postRequest = new HttpPostRequest();
-                String firebaseTokenId = null;
+                String firebaseTokenId = FirebaseInstanceId.getInstance().getToken();
                 if (getTokenButton.getText().toString().equalsIgnoreCase(getString(R.string.token_button_get_token))) {
-                    firebaseTokenId = FirebaseInstanceId.getInstance().getToken();
                     Log.d(TAG, "Token [" + firebaseTokenId + "]");
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("Token for firebase", firebaseTokenId);
@@ -46,7 +50,7 @@ public class LoginSuccessful extends AppCompatActivity {
                 } else if (getTokenButton.getText().toString().equalsIgnoreCase(getString(R.string.token_button_add_user))) {
                     UserData userData = new UserData();
                     userData.setUserName(Login.userName);
-                    userData.setRegistrationId(firebaseTokenId);
+                    userData.setUserToken(firebaseTokenId);
                     postRequest.execute(userData);
                     Toast.makeText(LoginSuccessful.this, "Status for [ " + Login.userName + " ] is " + postRequest.getStatus() + " ]", Toast.LENGTH_LONG).show();
                     Log.d(TAG, "Sent data for upload");
@@ -55,6 +59,6 @@ public class LoginSuccessful extends AppCompatActivity {
                     Toast.makeText(LoginSuccessful.this, "Status for [ " + Login.userName + " ] is " + postRequest.getStatus() + " ]", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        };
     }
 }
