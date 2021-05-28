@@ -1,7 +1,6 @@
 package com.notifire.android.adduser;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
-
 import java.io.Serializable;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -25,4 +24,5 @@ public class UserData implements Serializable {
     public void setUserToken(String userToken) {
         this.userToken = userToken;
     }
+
 }
