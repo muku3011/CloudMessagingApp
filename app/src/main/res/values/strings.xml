@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Firebase Auth</string>
+    <string name="app_name">Cloud Messaging App</string>
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
@@ -14,7 +14,7 @@
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="hint_name">Fullname</string>
+    <string name="hint_name">Full name</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
     <string name="btn_link_to_login">Already registered. Login Me!</string>
@@ -36,7 +36,7 @@
     <string name="token_button_add_user">Add User</string>
     <string name="token_button_get_status">Get Status</string>
     <string name="token_value">…message…</string>
-    <string name="default_notification_channel_id">nci</string>
+    <string name="default_notification_channel_id">Default</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string name="token_fetched">Token fetched successfully</string>
 </resources>
